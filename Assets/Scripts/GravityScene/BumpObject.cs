@@ -20,7 +20,18 @@ public class BumpObject : MonoBehaviour
         
         rb = gameObject.GetComponent<Rigidbody>();
 
-        
+        if ((int)gravDirection == 0)// if gravDirection is UP
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        }
+        else if ((int)gravDirection == 1)// if gravDirection is DOWN
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        }
+        else if ((int)gravDirection == 2 || (int)gravDirection == 3)// if gravDirection is LEFT or RIGHT
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+        }
 
     }
 
